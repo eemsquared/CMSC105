@@ -69,7 +69,7 @@ public class GatherInput {
     public void print(List<Object> list){
         System.out.println(title);
         for (int i = 1; i <= list.size(); i++) {
-            System.out.println(i + ".) " + list.get(i - 1));
+            System.out.println("[" + i + "] " + list.get(i - 1));
         }
     }
 }

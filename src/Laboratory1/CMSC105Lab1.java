@@ -24,7 +24,7 @@ public class CMSC105Lab1 {
         do {
             System.out.println("\tBasic Sampling Methods\n" +
                     "1. Simple Random Sampling\n" +
-                    "2. Sytematic Sampling\n" +
+                    "2. Systematic Sampling\n" +
                     "3. Stratified Sampling\n" +
                     "4. Quit\n" +
                     "Enter choice: ");
