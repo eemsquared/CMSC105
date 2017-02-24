@@ -9,17 +9,17 @@ import java.util.Scanner;
  */
 public class CMSC105Lab1 {
 
-    int choice;
-    GatherInput input = new GatherInput();
-    List<Object> list = new ArrayList<>();
-    Scanner sc = new Scanner(System.in);
+    private int choice;
+    private GatherInput input = new GatherInput();
+    private List<Object> list = new ArrayList<>();
+    private Scanner sc = new Scanner(System.in);
 
     public static void main (String[]args){
         CMSC105Lab1 lab = new CMSC105Lab1();
         lab.run();
     }
 
-    public void run(){
+    private void run(){
 
         do {
             System.out.println("\tBasic Sampling Methods\n" +
@@ -39,6 +39,11 @@ public class CMSC105Lab1 {
                 simpleRandomSampling.print(list);
                 break;
 
+            case 2 :
+                SystematicSampling systematicSampling = new SystematicSampling();
+                input.sampleFrame();
+                list = systematicSampling.randomSamples(input.getList());
+                systematicSampling.print(list);
             case 4 :
                 System.exit(0);
         }
