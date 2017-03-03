@@ -17,6 +17,7 @@ public class GatherInput {
     List<Object> list = new ArrayList<>();
 
     public void sampleFrame(){
+        list.clear();
         do {
             System.out.println("Please enter population size: ");
             populationSize = sc.nextInt();

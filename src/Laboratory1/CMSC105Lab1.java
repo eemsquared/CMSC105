@@ -29,9 +29,9 @@ public class CMSC105Lab1 {
                     "4. Quit\n" +
                     "Enter choice: ");
             choice = sc.nextInt();
-        }while (choice < 1 || choice > 4);
 
         switch (choice){
+
             case 1 :
                 SimpleRandomSampling simpleRandomSampling = new SimpleRandomSampling();
                 input.sampleFrame();
@@ -44,9 +44,10 @@ public class CMSC105Lab1 {
                 input.sampleFrame();
                 list = systematicSampling.randomSamples(input.getList());
                 systematicSampling.print(list);
-            case 4 :
-                System.exit(0);
+            /*case 4 :
+                System.exit(0);*/
         }
+        }while (choice != 4);
     }
 
 
