@@ -29,19 +29,28 @@ public class CMSC105Lab1 {
                     "4. Quit\n" +
                     "Enter choice: ");
             choice = sc.nextInt();
+            if(choice != 4) {
+                input.sampleFrame();
+            }else{
+                System.out.println("TERMINATING PROGRAM...");
+                try {
+                    Thread.sleep(2000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                System.exit(0);
+            }
 
         switch (choice){
 
             case 1 :
                 SimpleRandomSampling simpleRandomSampling = new SimpleRandomSampling();
-                input.sampleFrame();
                 list = simpleRandomSampling.randomSamples(input.getList());
                 simpleRandomSampling.print(list);
                 break;
 
             case 2 :
                 SystematicSampling systematicSampling = new SystematicSampling();
-                input.sampleFrame();
                 list = systematicSampling.randomSamples(input.getList());
                 systematicSampling.print(list);
             /*case 4 :
