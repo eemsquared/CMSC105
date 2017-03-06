@@ -29,9 +29,7 @@ public class CMSC105Lab1 {
                     "4. Quit\n" +
                     "Enter choice: ");
             choice = sc.nextInt();
-            if(choice != 4) {
-                input.sampleFrame();
-            }else{
+            if(choice == 4) {
                 System.out.println("TERMINATING PROGRAM...");
                 try {
                     Thread.sleep(2000);
@@ -39,6 +37,9 @@ public class CMSC105Lab1 {
                     e.printStackTrace();
                 }
                 System.exit(0);
+
+            }else if (choice >= 1 && choice < 4){
+                input.sampleFrame();
             }
 
         switch (choice){
@@ -53,14 +54,16 @@ public class CMSC105Lab1 {
                 SystematicSampling systematicSampling = new SystematicSampling();
                 list = systematicSampling.randomSamples(input.getList());
                 systematicSampling.print(list);
-            /*case 4 :
-                System.exit(0);*/
+                break;
+
+            case 3 :
+                StratifiedSampling stratifiedSampling = new StratifiedSampling();
+                list = stratifiedSampling.randomSamples(input.getList());
+                stratifiedSampling.print(list);
+                break;
+
         }
         }while (choice != 4);
     }
-
-
-
-        // System.out.println("\tBasic Sampling Methods\n1. Simple Random Sampling\n2. Sytematic Sampling\n3. Stratified Sampling\n4. Quit");
 
 }
