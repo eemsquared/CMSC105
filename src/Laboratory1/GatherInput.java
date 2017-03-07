@@ -29,27 +29,30 @@ public class GatherInput {
 
             try {
                 if (choiceOfFrame == 1) {
-                    System.out.println("Enter your samples: ");
-                    for (int i = 0; i < populationSize; i++) {
-                        sampleInt = sc.nextInt();
-                        list.add(sampleInt);
-                    }
+                        System.out.println("Enter your samples: ");
+                        for (int i = 0; i < populationSize; i++) {
+                            sampleInt = sc.nextInt();
+                            list.add(sampleInt);
+                        }
                 }
                 if (choiceOfFrame == 2) {
-                    System.out.println("Enter your samples: ");
-                    try{
-                        for(int i = 0; i < populationSize; i++){
-                            sampleChar = sc.next().charAt(0);
-                            if((sampleChar - '0') <= 9 && (sampleChar - 0) >= 0){
-                                System.out.println("Samples must be characters.");
-                                System.exit(0);
-                            }else {
-                                list.add(sampleChar);
+                    do {
+                        System.out.println("Enter your samples: ");
+                        try {
+                            for (int i = 0; i < populationSize; i++) {
+                                sampleChar = sc.next().charAt(0);
+                                if ((sampleChar - '0') <= 9 && (sampleChar - 0) >= 0) {
+                                    System.out.println("Your samples must be characters.");
+                                   //
+                                    // System.exit(0);
+                                } else {
+                                    list.add(sampleChar);
+                                }
                             }
+                        } catch (Exception e) {
+                            e.printStackTrace();
                         }
-                    }catch (Exception e){
-                        e.printStackTrace();
-                    }
+                    }while ((sampleChar - '0') <= 9 && (sampleChar - 0) >= 0);
                 }
             } catch (Exception e) {
                 throw new RuntimeException("Your samples are invalid.");
