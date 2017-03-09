@@ -13,7 +13,6 @@ public class SimpleRandomSampling extends GatherInput{
     private int randomIndex;
     private Random random = new Random();
     private List<Object> sampleList = new ArrayList<>();
-    //Scanner sc = new Scanner(System.in);
 
     public SimpleRandomSampling(){
         title = "RANDOM SAMPLING";

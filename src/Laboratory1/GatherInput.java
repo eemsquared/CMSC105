@@ -32,35 +32,34 @@ public class GatherInput {
                         System.out.println("Enter your samples: ");
                         for (int i = 0; i < populationSize; i++) {
                             sampleInt = sc.nextInt();
-                            list.add(sampleInt);
+                            if (sampleInt < 0){
+                                System.out.println("Please enter positive numbers only.");
+                                System.exit(0);
+                            }else {
+                                list.add(sampleInt);
+                            }
                         }
                 }
                 if (choiceOfFrame == 2) {
-                    do {
-                        System.out.println("Enter your samples: ");
-                        try {
-                            for (int i = 0; i < populationSize; i++) {
-                                sampleChar = sc.next().charAt(0);
-                                if ((sampleChar - '0') <= 9 && (sampleChar - 0) >= 0) {
-                                    System.out.println("Your samples must be characters.");
-                                   //
-                                    // System.exit(0);
-                                } else {
-                                    list.add(sampleChar);
-                                }
-                            }
-                        } catch (Exception e) {
-                            e.printStackTrace();
+                    System.out.println("Enter your samples: ");
+                    for (int i = 0; i < populationSize; i++) {
+                        sampleChar = sc.next().charAt(0);
+                        if ((sampleChar - '0') <= 9 && (sampleChar - '0') >= 0) {
+                            System.out.println("Your samples are invalid. It must be all characters.");
+                            System.exit(0);
+                        } else {
+                            list.add(sampleChar);
                         }
-                    }while ((sampleChar - '0') <= 9 && (sampleChar - 0) >= 0);
+                    }
                 }
             } catch (Exception e) {
-                throw new RuntimeException("Your samples are invalid.");
+                throw new RuntimeException("Your samples are invalid. It must be all numerical.");
             }
 
 
+            System.out.println("\n" + "SAMPLE FRAME: ");
             for (int i = 1; i <= list.size(); i++) {
-                System.out.println(i + ".) " + list.get(i - 1));
+                System.out.println("[Index" + i + "] " + "Item: " + list.get(i - 1));
             }
 
         } while (choiceOfFrame < 1 || choiceOfFrame > 2);
@@ -71,14 +70,15 @@ public class GatherInput {
     }
 
     public void print(List<Object> list){
-        System.out.println(title);
+        System.out.println("\n" + title);
         for (int i = 1; i <= list.size(); i++) {
             try {
                 Thread.sleep(500);
-                System.out.println("[" + i + "] " + list.get(i - 1));
+                System.out.println("[Index " + i + "] " + "Item: " + list.get(i - 1));
             }catch (Exception e){
                 e.printStackTrace();
             }
         }
+        System.out.println("\n");
     }
 }

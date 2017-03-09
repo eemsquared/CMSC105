@@ -33,12 +33,12 @@ public class StratifiedSampling extends GatherInput{
         }
 
         for(int i = 0; i < groupList.size(); i++){
+            System.out.println("\n");
             System.out.println("Strata " + (i+1));
             strata = (List) groupList.get(i);
             for(int j = 0; j < strata.size(); j++){
-                System.out.println((j+1) + ".) " + strata.get(j));
+                System.out.println("[Index " + (j+1) + "] " + strata.get(j));
             }
-            System.out.println("\n");
         }
 
         System.out.println("Please indicate the percentage of sample size: ");

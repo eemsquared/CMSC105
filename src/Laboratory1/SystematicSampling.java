@@ -15,7 +15,6 @@ public class SystematicSampling extends GatherInput {
     private int k;
     private Random random = new Random();
     private List<Object> sampleList = new ArrayList<>();
-    //private Scanner sc = new Scanner(System.in);
 
     public SystematicSampling(){
         title = "SYSTEMATIC SAMPLING";

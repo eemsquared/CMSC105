@@ -32,7 +32,7 @@ public class CMSC105Lab1 {
             if(choice == 4) {
                 System.out.println("TERMINATING PROGRAM...");
                 try {
-                    Thread.sleep(2000);
+                    Thread.sleep(1000);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
