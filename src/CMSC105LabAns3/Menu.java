@@ -5,39 +5,40 @@ import java.util.Scanner;
 /**
  * Created by mmcalvarez on 4/25/2017.
  */
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
 public class Menu {
     private int choice;
-    Scanner sc = new Scanner(System.in);
+    private GatherInput input = new GatherInput();
+    private List<Double> list = new ArrayList<>();
+    private Scanner sc = new Scanner(System.in);
+    private String dataSetTitle;
 
-    Menu(){
-        do{
+   Menu(){
+
+        do {
             System.out.println("\tDescriptive Statistics\n" +
-            "1. Ungrouped Data\n" +
-            "2. Grouped Data\n" +
-            "3. Quit\n");
+                    "1. Ungrouped Data\n" +
+                    "2. Grouped Data\n" +
+                    "3. Quit\n" +
+                    "\nEnter choice: ");
             choice = sc.nextInt();
+        }while (choice < 1 || choice > 3);
 
-            if (choice == 3){
-                System.out.println("TERMINATING PROGRAM...");
-                try {
-                    Thread.sleep(500);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
+        switch (choice){
+            case 1 :
+                input.sampleFrame(choice);
+                break;
+            case 2 :
+                input.sampleFrame(choice);
+                break;
+
+            case 3 :
                 System.exit(0);
-            }
-            else {
 
-                switch (choice){
-                    case 1 :
-                        new Ungrouped(1);
-                        break;
-
-                    case 2 :
-                        break;
-
-                }
-            }
-        }while (choice != 3);
+        }
     }
+
 }

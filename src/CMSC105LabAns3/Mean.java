@@ -11,12 +11,12 @@ public class Mean {
 
     }
 
-    public double getMean(ArrayList<Integer> list){
+    public void getMean(ArrayList<Integer> list, ArrayList<Double> list1, int choice){
         Double sum = 0.0;
 
         for (int i = 0; i < list.size(); i++){
             sum += list.get(i);
         }
-        return sum/list.size();
+        System.out.println("[Mean] " + sum/list.size());
     }
 }
