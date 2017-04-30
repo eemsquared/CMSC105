@@ -15,22 +15,32 @@ public class Median {
 
     }
 
-    public void getMedian(ArrayList<Integer> list, ArrayList<Double> list1, int choice){
+    public void getMedian(List<Object> list, int choice){
         switch (choice){
             case 1 :
                 if (list.size() % 2 != 0){
                     middle = (list.size()/2) + 1;
-                    System.out.println("[Median] " + list.get(middle - 1));
+                    System.out.println("[Median] " + list.get(middle - 1) + "\n");
                 }else{
                     middle = list.size()/2;
-                    int one = list.get(middle - 1);
-                    int two = list.get(middle);
+                    int one = (int) list.get(middle - 1);
+                    int two = (int) list.get(middle);
                     double sum = (one + two) / 2.0;
                     System.out.println(sum);
                 }
                 break;
 
             case 2 : //pag double ang array
+                if (list.size() % 2 != 0){
+                    middle = (list.size()/2) + 1;
+                    System.out.println("[Median] " + list.get(middle - 1) + "\n");
+                }else{
+                    middle = list.size()/2;
+                    double one = (double) list.get(middle - 1);
+                    double two = (double) list.get(middle);
+                    double sum = (one + two) / 2.0;
+                    System.out.println(sum);
+                }
                 break;
         }
 

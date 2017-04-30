@@ -15,13 +15,13 @@ public class GatherInput {
     private int choiceOfMeasure;
     private double sampleFloat;
     Scanner sc = new Scanner(System.in);
-    List list = new ArrayList<>();
+    List<Object> list = new ArrayList<>();
 
 
     public void sampleFrame(int choice){
 
         do {
-            System.out.println("Please enter data size.");
+            System.out.println("\nPlease enter data size.");
             while (!sc.hasNextInt()) {
                 System.out.println("Size is invalid. Enter again.");
                 sc.next();
@@ -29,19 +29,19 @@ public class GatherInput {
             populationSize = sc.nextInt();
         } while (populationSize <= 0);
 
-        System.out.println("Please enter a brief description about your data.");
+        System.out.println("\nPlease enter a brief description about your data.");
         sc.nextLine();
         title = sc.nextLine();
 
         do {
-            System.out.println("Enter type of numerical data:\n1. Integer Data\n2. Floating Point Data");
+            System.out.println("\nEnter type of numerical data:\n1. Integer Data\n2. Floating Point Data");
             choiceOfFrame = sc.nextInt();
 
             if(choiceOfFrame == 1){
-                System.out.println("Enter your samples.");
+                System.out.println("\nEnter your samples.\n");
                 for(int i = 0; i < populationSize; i++ ){
                     while (!sc.hasNextInt()) {
-                        System.out.println("Sample is invalid. Enter again:\n");
+                        System.out.println("Sample is invalid. Enter again:");
                         sc.next();
                     }
                     sampleInt = sc.nextInt();
@@ -50,7 +50,7 @@ public class GatherInput {
             }
 
             if(choiceOfFrame == 2){
-                System.out.println("Enter your samples.");
+                System.out.println("\nEnter your samples.");
                 for(int i = 0; i < populationSize; i++ ){
                     while (!sc.hasNextFloat()) {
                         System.out.println("Sample is invalid. Enter again:");
@@ -91,7 +91,7 @@ public class GatherInput {
 
     public void getMeasure(){
         do {
-            System.out.println("1. Mean\n2. Median\n3. Mode\n4. All measures\n");
+            System.out.println("\n1. Mean\n2. Median\n3. Mode\n4. All measures");
             while (!sc.hasNextInt()) {
                 System.out.println("Invalid input.");
                 sc.next();
@@ -101,11 +101,12 @@ public class GatherInput {
 
         switch (choiceOfMeasure){
             case 1 :
-                new Mean().getMean((ArrayList<Integer>) list, null, choiceOfFrame);
+                 new Mean().getMean(list, choiceOfFrame);
+
                 break;
 
             case 2 :
-                new Median().getMedian((ArrayList<Integer>) list, null, choiceOfFrame);
+                new Median().getMedian(list, choiceOfFrame);
                 break;
 
             case 3 :
