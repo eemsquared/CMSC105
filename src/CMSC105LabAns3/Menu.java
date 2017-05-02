@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.Scanner;
 
 public class Menu {
-    private int choice;
+    int choice;
     private GatherInput input = new GatherInput();
     private Scanner sc = new Scanner(System.in);
 
@@ -39,5 +39,4 @@ public class Menu {
            }
        }while (choice != 3);
     }
-
 }

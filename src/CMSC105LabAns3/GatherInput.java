@@ -1,4 +1,6 @@
-package CMSCConsoleLabAns3;
+package CMSC105LabAns3;
+
+import CMSC105LabAns3.Mean;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,9 +12,13 @@ public class GatherInput {
     private int choiceOfFrame;
     private int sampleInt;
     private int choiceOfMeasure;
+    private int classInterval;
     private double sampleFloat;
     Scanner sc = new Scanner(System.in);
     List<Object> list = new ArrayList<>();
+    List<Double> lowerCL = new ArrayList<>();
+    List<Double> upperCL = new ArrayList<>();
+    ArrayList<Double> freq = new ArrayList<>();
 
 
     public void sampleFrame(int choice){
@@ -30,40 +36,141 @@ public class GatherInput {
         sc.nextLine();
         title = sc.nextLine();
 
-        do {
-            System.out.println("\nEnter type of numerical data:\n1. Integer Data\n2. Floating Point Data");
-            choiceOfFrame = sc.nextInt();
+        switch (choice){
+            case 1 :
+                do {
+                    System.out.println("\nEnter type of numerical data:\n1. Integer Data\n2. Floating Point Data");
+                    choiceOfFrame = sc.nextInt();
 
-            if(choiceOfFrame == 1){
-                System.out.println("\nEnter your samples.\n");
-                for(int i = 0; i < populationSize; i++ ){
-                    while (!sc.hasNextInt()) {
-                        System.out.println("Sample is invalid. Enter again:");
+                    if(choiceOfFrame == 1){
+                        System.out.println("\nEnter your samples.\n");
+                        for(int i = 0; i < populationSize; i++ ){
+                            while (!sc.hasNextInt()) {
+                                System.out.println("Sample is invalid. Enter again:");
+                                sc.next();
+                            }
+                            sampleInt = sc.nextInt();
+                            list.add(sampleInt);
+                        }
+                    }
+
+                    if(choiceOfFrame == 2){
+                        System.out.println("\nEnter your samples.");
+                        for(int i = 0; i < populationSize; i++ ){
+                            while (!sc.hasNextFloat()) {
+                                System.out.println("Sample is invalid. Enter again:");
+                                sc.next();
+                            }
+                            sampleFloat = sc.nextDouble();
+                            list.add(sampleFloat);
+                        }
+                    }
+
+                } while (choiceOfFrame < 1 || choiceOfFrame > 2);
+
+                continueOrEdit();
+                getMeasure();
+
+                break;
+
+            case 2 :
+                do {
+                    try {
+                        System.out.println("Input number of class intervals: \n");
+                        classInterval = sc.nextInt();
+                        break;
+                    }
+                    catch (Exception e) {
+                        System.out.println("Input is invalid");
                         sc.next();
                     }
-                    sampleInt = sc.nextInt();
-                    list.add(sampleInt);
-                }
-            }
+                } while (true);
 
-            if(choiceOfFrame == 2){
-                System.out.println("\nEnter your samples.");
-                for(int i = 0; i < populationSize; i++ ){
+                System.out.println("Input Lower Class Limit: \n");
+                for (int i = 0; i < classInterval; i++) {
                     while (!sc.hasNextFloat()) {
                         System.out.println("Sample is invalid. Enter again:");
                         sc.next();
                     }
-                    sampleFloat = sc.nextDouble();
-                    list.add(sampleFloat);
+                    lowerCL.add(sc.nextDouble());
                 }
-            }
+
+                System.out.println("Input Upper Class Limit: \n");
+                for (int i = 0; i < classInterval; i++) {
+                    while (!sc.hasNextFloat()) {
+                        System.out.println("Sample is invalid. Enter again:");
+                        sc.next();
+                    }
+                    upperCL.add(sc.nextDouble());
+                }
+
+                System.out.println("Input Frequency column: \n");
+                for (int i = 0; i < classInterval; i++) {
+                    while (!sc.hasNextFloat()) {
+                        System.out.println("Sample is invalid. Enter again:");
+                        sc.next();
+                    }
+                    freq.add(sc.nextDouble());
+                }
+
+                double midpoint;
+                ArrayList<Double> mid = new ArrayList<>();
+                for (int i = 0; i < classInterval; i++) {
+                    midpoint = (upperCL.get(i) + lowerCL.get(i))/2;
+                    mid.add(midpoint);
+                }
+
+                double product;
+                ArrayList<Double> columnD = new ArrayList<>();
+                for (int i = 0; i < classInterval; i++) {
+                    product = (mid.get(i) * freq.get(i));
+                    columnD.add(product);
+                }
+
+                double product2;
+                ArrayList<Double> arrayList = new ArrayList<>();
+                for (int i = 0; i < classInterval; i++) {
+                    product2 = (mid.get(i) * mid.get(i) * freq.get(i));
+                    arrayList.add(product2);
+                }
+
+                /*for (int i = 0; i < classInterval; i++){
+                    System.out.println(lowerCL.get(i) + "-" + upperCL.get(i) +  "\t"+ freq.get(i) + "\t"+
+                            mid.get(i) +"\t" + columnD.get(i) + "\t" + arrayList.get(i));
+                }*/
+
+                do {
+                    System.out.println("\n1. Mean\n2. Median\n3. Mode\n4. All measures");
+                    while (!sc.hasNextInt()) {
+                        System.out.println("Invalid input.");
+                        sc.next();
+                    }
+                    choiceOfMeasure = sc.nextInt();
+                }while (choiceOfMeasure < 1 || choiceOfMeasure > 4);
+
+                switch (choiceOfMeasure){
+                    case 1 :
+                        new Mean().getMean(columnD, freq);
+                        break;
+
+                    case 2 :
+                        System.out.println("No Median\n");
+                        break;
+
+                    case 3 :
+                        new Mode().getMode(freq);
+                        break;
+
+                    case 4 :
+                        new Mean().getMean(columnD, freq);
+                        System.out.println("No Median\n");
+                        new Mode().getMode(freq);
+                        break;
+                }
+                break;
+        }
 
 
-
-        } while (choiceOfFrame < 1 || choiceOfFrame > 2);
-
-        continueOrEdit();
-        getMeasure();
     }
 
     public void continueOrEdit(){
@@ -134,7 +241,6 @@ public class GatherInput {
             	
             }
         } while (edit < 1 || edit > 2 || cont == 1);
-
 
     }
 

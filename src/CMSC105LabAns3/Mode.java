@@ -1,4 +1,4 @@
-package CMSCConsoleLabAns3;
+package CMSC105LabAns3;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -63,4 +63,41 @@ public class Mode {
     	        	System.out.println("juju");
     	        }
     }
+
+    public void getMode(ArrayList<Double> freq){
+		double max = 0;
+		ArrayList<Integer> modes = new ArrayList<>();
+		for (int i = 0; i < freq.size(); i++){
+			if (freq.get(i) > max){
+				max = freq.get(i);
+			}
+		}
+
+		if (max > 1){
+			for (int i = 0; i < freq.size(); i++){
+				if (freq.get(i) == max){
+					modes.add(i);
+				}
+			}
+		}
+        if(modes.size() == 1){
+            System.out.println("[Mode]	[" + modes.get(0) + "] - Unimodal");
+        }
+        else if(modes.size() == 2){
+            System.out.println("[Mode]	[" + modes.get(0) + " " + modes.get(1) + "] - Bimodal");
+        }
+        else if(modes.size() == 0){
+            System.out.println("No mode.");
+        }
+        else if(modes.size() > 2){
+            System.out.println("[Mode]	[");
+            for(int i = 0; i < modes.size(); i++){
+                System.out.println(" " + modes.get(i));
+            }
+            System.out.println("] - Multimodal");
+        }
+        else{
+            System.out.println("juju");
+        }
+	}
 }

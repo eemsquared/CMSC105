@@ -31,4 +31,18 @@ public class Mean {
                 break;
         }
     }
+
+    public void getMean(ArrayList<Double> columnD, ArrayList<Double> freq){
+        double total1 = 0;
+        double total2 = 0;
+
+        for (int i = 0; i < columnD.size();i++){
+            total1 += columnD.get(i);
+        }
+
+        for (int i = 0; i < freq.size();i++){
+            total2 += freq.get(i);
+        }
+        System.out.println("[Mean] " + total1/total2 + "\n");
+    }
 }

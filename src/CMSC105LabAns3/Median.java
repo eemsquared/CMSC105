@@ -1,4 +1,4 @@
-package CMSCConsoleLabAns3;
+package CMSC105LabAns3;
 
 import java.util.ArrayList;
 import java.util.Arrays;
