@@ -7,6 +7,9 @@ import java.util.List;
  * Created by mmcalvarez on 4/26/2017.
  */
 public class Mean {
+    List<Double> var = new ArrayList<>();
+    Double mean;
+    Double sum2;
 
     Mean(){
 
@@ -19,6 +22,7 @@ public class Mean {
             case 1 :
                 for (int i = 0; i < list.size(); i++){
                     sum += (int) list.get(i);
+                    System.out.println();
                 }
                 System.out.println("[Mean] " + sum/list.size() + "\n");
                 break;
@@ -27,7 +31,8 @@ public class Mean {
                 for (int i = 0; i < list.size(); i++){
                     sum += (double) list.get(i);
                 }
-                System.out.println("[Mean] " + sum/list.size() + "\n");
+                mean = sum/list.size();
+                System.out.println("[Mean] " + mean + "\n");
                 break;
         }
     }
