@@ -138,36 +138,44 @@ public class GatherInput {
                     System.out.println(lowerCL.get(i) + "-" + upperCL.get(i) +  "\t"+ freq.get(i) + "\t"+
                             mid.get(i) +"\t" + columnD.get(i) + "\t" + arrayList.get(i));
                 }*/
+                int menu;
+            do {
+                 menu = 1;
 
                 do {
-                    System.out.println("\n1. Mean\n2. Median\n3. Mode\n4. All measures");
+                    System.out.println("\n1. Mean\n2. Median\n3. Mode\n4. All measures\n5. Back to Menu");
                     while (!sc.hasNextInt()) {
                         System.out.println("Invalid input.");
                         sc.next();
                     }
                     choiceOfMeasure = sc.nextInt();
-                }while (choiceOfMeasure < 1 || choiceOfMeasure > 4);
+                } while (choiceOfMeasure < 1 || choiceOfMeasure > 5);
 
-                switch (choiceOfMeasure){
-                    case 1 :
+                switch (choiceOfMeasure) {
+                    case 1:
                         new Mean().getMean(columnD, freq);
                         break;
 
-                    case 2 :
+                    case 2:
                         System.out.println("No Median\n");
                         break;
 
-                    case 3 :
+                    case 3:
                         new Mode().getMode(freq);
                         break;
 
-                    case 4 :
+                    case 4:
                         new Mean().getMean(columnD, freq);
                         System.out.println("No Median\n");
                         new Mode().getMode(freq);
+                        break;
+                    case 5:
+                        menu = 0;
+                        new Menu();
                         break;
                 }
-                break;
+            }while(menu != 0);
+
         }
 
 
