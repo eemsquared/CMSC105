@@ -13,6 +13,35 @@ public class Median {
     }
 
     public void getMedian(List<Object> list, int choice){
+
+        switch (choice){
+            case 1 :
+
+                int temp;
+                for (int j = 0; j < list.size(); j++){
+                    for (int i = 0; i<list.size()-1; i++){
+                        if ((int) list.get(i) > (int) list.get(i+1)){
+                            temp = (int) list.get(i);
+                            list.set(i, list.get(i+1));
+                            list.set(i+1, temp);
+                        }
+                    }
+                }
+                break;
+
+            case 2 :
+                double temporary;
+                for (int j = 0; j < list.size(); j++){
+                    for (int i = 0; i<list.size()-1; i++){
+                        if ((double) list.get(i) > (double) list.get(i+1)){
+                            temporary = (double) list.get(i);
+                            list.set(i, list.get(i+1));
+                            list.set(i+1, temporary);
+                        }
+                    }
+                }
+                break;
+        }
     	
     	if (list.size() % 2 != 0){
             middle = (list.size()/2) + 1;
