@@ -161,13 +161,13 @@ public class GatherInput {
                         break;
 
                     case 3:
-                        new Mode().getMode(freq);
+                        new Mode().getMode(freq, lowerCL, upperCL);
                         break;
 
                     case 4:
                         new Mean().getMean(columnD, freq);
                         System.out.println("No Median\n");
-                        new Mode().getMode(freq);
+                        new Mode().getMode(freq, lowerCL, upperCL);
                         break;
                     case 5:
                         menu = 0;

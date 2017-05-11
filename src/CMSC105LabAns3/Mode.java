@@ -11,8 +11,8 @@ public class Mode {
 
     }
 
-    public void getMode(List<Object> list, int choice){
-        Double sum = 0.0;
+    public void getMode(List<Object> list, int choice) {
+        /*Double sum = 0.0;
         int compareValue;
         List list2 = new ArrayList<>();
         List groupList = new LinkedList<>();
@@ -61,43 +61,66 @@ public class Mode {
     	        }
     	        else{
     	        	System.out.println("juju");
-    	        }
-    }
+    	        }*/
 
-    public void getMode(ArrayList<Double> freq){
-		double max = 0;
-		ArrayList<Integer> modes = new ArrayList<>();
-		for (int i = 0; i < freq.size(); i++){
-			if (freq.get(i) > max){
-				max = freq.get(i);
+		ArrayList mode = new ArrayList();
+
+
+		if (choice == 1){
+			for (int i = 0; i < list.size(); i++){
+				boolean flag = false;
+				int value = (int) list.get(i);
+				for (int j = i+1; j < list.size(); j++){
+					if ((int) list.get(j) == value){
+						flag = true;
+						break;
+					}
+				}
+				if (flag && !mode.contains(list.get(i))){
+					mode.add(list.get(i));
+				}
 			}
-		}
 
-		if (max > 1){
-			for (int i = 0; i < freq.size(); i++){
-				if (freq.get(i) == max){
-					modes.add(i);
+		} else {
+			for (int i = 0; i < list.size(); i++){
+				boolean flag = false;
+				double value = (double) list.get(i);
+				for (int j = i+1; j < list.size(); j++){
+					if ((double) list.get(j) == value){
+						flag = true;
+						break;
+					}
+				}
+				if (flag && !mode.contains(list.get(i))){
+					mode.add(list.get(i));
 				}
 			}
 		}
-        if(modes.size() == 1){
-            System.out.println("[Mode]	[" + modes.get(0) + "] - Unimodal");
-        }
-        else if(modes.size() == 2){
-            System.out.println("[Mode]	[" + modes.get(0) + " " + modes.get(1) + "] - Bimodal");
-        }
-        else if(modes.size() == 0){
-            System.out.println("No mode.");
-        }
-        else if(modes.size() > 2){
-            System.out.println("[Mode]	[");
-            for(int i = 0; i < modes.size(); i++){
-                System.out.println(" " + modes.get(i));
-            }
-            System.out.println("] - Multimodal");
-        }
-        else{
-            System.out.println("juju");
-        }
+
+		if (mode.size() == 1){
+			System.out.println("Mode: " + mode + " --> Unimodal\n");
+		}
+		if (mode.size() == 2){
+			System.out.println("Mode: " + mode + " --> Bimodal\n");
+		}
+		if (mode.size() > 2){
+			System.out.println("Mode: " + mode + " --> Multimodal\n");
+		}
+		if (mode.isEmpty()){
+			System.out.println("Mode: No mode\n");
+		}
+
+	}
+
+	public void getMode(ArrayList<Double> freq, List<Double> lower, List<Double> upper) {
+		double max = 0;
+		int index = 0;
+		for (int i = 0; i < freq.size(); i++) {
+			if (freq.get(i) > max) {
+				max = freq.get(i);
+				index = i;
+			}
+		}
+		System.out.println("Modal Class: " + lower.get(index) + " - " + upper.get(index));
 	}
 }
