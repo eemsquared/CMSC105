@@ -114,13 +114,17 @@ public class Mode {
 
 	public void getMode(ArrayList<Double> freq, List<Double> lower, List<Double> upper) {
 		double max = 0;
-		int index = 0;
-		for (int i = 0; i < freq.size(); i++) {
+
+		for (int i = 0; i < freq.size(); i++) { //get the maximum
 			if (freq.get(i) > max) {
 				max = freq.get(i);
-				index = i;
 			}
 		}
-		System.out.println("Modal Class: " + lower.get(index) + " - " + upper.get(index));
+		for (int i = 0; i < freq.size(); i++){
+			if (max == freq.get(i)){
+
+				System.out.println("Modal Class/es: " + lower.get(i) + " - " + upper.get(i));
+			}
+		}
 	}
 }
