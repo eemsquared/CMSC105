@@ -120,7 +120,7 @@ public class GatherInput {
                     mid.add(midpoint);
                 }
 
-                double product;
+                double product; //midpoint x freq
                 ArrayList<Double> columnD = new ArrayList<>();
                 for (int i = 0; i < classInterval; i++) {
                     product = (mid.get(i) * freq.get(i));
@@ -153,7 +153,7 @@ public class GatherInput {
 
                 switch (choiceOfMeasure) {
                     case 1:
-                        new Mean().getMean(columnD, freq);
+                        new Mean().getMean(columnD, freq, mid);
                         break;
 
                     case 2:
@@ -165,7 +165,7 @@ public class GatherInput {
                         break;
 
                     case 4:
-                        new Mean().getMean(columnD, freq);
+                        new Mean().getMean(columnD, freq, mid);
                         System.out.println("No Median\n");
                         new Mode().getMode(freq, lowerCL, upperCL);
                         break;
