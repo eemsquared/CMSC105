@@ -8,7 +8,6 @@ import java.util.List;
  */
 public class Mean {
     List<Double> var = new ArrayList<>();
-    Double sum2;
 
     Mean(){
 
@@ -53,12 +52,12 @@ public class Mean {
         }
     }
 
-    public void getMean(ArrayList<Double> columnD, ArrayList<Double> freq, ArrayList<Double> midpoint){
-        double total1 = 0.0;
-        double total2 = 0.0;
-        double total3 = 0.0;
-        double mean;
-        double s;
+    public void getMean(ArrayList<Double> columnD, ArrayList<Double> freq, ArrayList<Double> product2){
+        float total1 = 0.0f;
+        float total2 = 0.0f;
+        float total3 = 0.0f;
+        float mean;
+        float s;
 
 
         for (int i = 0; i < columnD.size();i++){
@@ -69,15 +68,17 @@ public class Mean {
             total2 += freq.get(i);
         }
 
-        for (int i = 0; i < midpoint.size(); i++){
-            total3 += freq.get(i) * (Math.pow(midpoint.get(i), 2));
+        for (int i = 0; i < product2.size(); i++){
+            total3 += product2.get(i);
         }
-        mean = total1/total2;
+        mean = (total1/total2);
         System.out.println("[Mean] " + mean + "\n");
-        double numerator = total2 * (total3 - (Math.pow(total1, 2)));
-        double denominator = total2 * (total2 - 1.0);
+        float numerator = (float) ((total2 * total3) - Math.pow(total1, 2));
+        float denominator = total2 * (total2 - 1.0f);
+        float variance = (numerator/denominator);
+        s = (float) Math.sqrt(numerator/denominator);
 
-        s = Math.sqrt(numerator/denominator);
+        System.out.println("[Variance] " + variance + "\n");
         System.out.println("[Standard Deviation] " + s + "\n");
     }
 }

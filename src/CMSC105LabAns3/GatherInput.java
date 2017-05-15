@@ -130,14 +130,10 @@ public class GatherInput {
                 double product2;
                 ArrayList<Double> arrayList = new ArrayList<>();
                 for (int i = 0; i < classInterval; i++) {
-                    product2 = (mid.get(i) * mid.get(i) * freq.get(i));
+                    product2 = freq.get(i) * Math.pow(mid.get(i), 2);
                     arrayList.add(product2);
                 }
 
-                /*for (int i = 0; i < classInterval; i++){
-                    System.out.println(lowerCL.get(i) + "-" + upperCL.get(i) +  "\t"+ freq.get(i) + "\t"+
-                            mid.get(i) +"\t" + columnD.get(i) + "\t" + arrayList.get(i));
-                }*/
                 int menu;
             do {
                  menu = 1;
@@ -165,7 +161,7 @@ public class GatherInput {
                         break;
 
                     case 4:
-                        new Mean().getMean(columnD, freq, mid);
+                        new Mean().getMean(columnD, freq, arrayList);
                         System.out.println("No Median\n");
                         new Mode().getMode(freq, lowerCL, upperCL);
                         break;
