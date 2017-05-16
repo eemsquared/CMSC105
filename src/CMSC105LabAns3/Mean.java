@@ -78,6 +78,8 @@ public class Mean {
         float variance = (numerator/denominator);
         s = (float) Math.sqrt(numerator/denominator);
 
+        //System.out.println("MM Gwapa");
+
         System.out.println("[Variance] " + variance + "\n");
         System.out.println("[Standard Deviation] " + s + "\n");
     }
